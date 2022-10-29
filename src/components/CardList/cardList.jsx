@@ -5,23 +5,23 @@ import Card from "../Card/Card";
 const cardList = () => {
   const [champ, setChamp] = useState([]);
   const [champData, setChampData] = useState([]);
+  const info = [];
 
   useEffect(() => {
     GET("en_US").then((data) => {
       setChamp(data?.data);
     });
-
-    for (let key in champ) {
-      setChampData([champ[key]]);
-    }
   }, []);
 
-  console.log(champ);
+  for (let key in champ) {
+    info.push(champ[key]);
+  }
+  console.log(info);
   return (
     <div>
-      {/* {champData?.map((champions, i, a) => (
+      {info?.map((champions, i) => (
         <Card key={i} data={champions} />
-      ))} */}
+      ))}
     </div>
   );
 };

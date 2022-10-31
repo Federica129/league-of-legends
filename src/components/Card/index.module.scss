@@ -1,0 +1,45 @@
+.Card {
+  border: 1px solid rgb(49, 49, 49);
+  width: fit-content;
+  transition: all 0.3s;
+
+  &:hover {
+    border-left: 1px solid rgb(255, 255, 75);
+    border-top: 1px solid rgb(255, 255, 75);
+    border-right: 1px solid rgb(202, 202, 0);
+    border-bottom: 1px solid rgb(202, 202, 0);
+  }
+
+  .cardImg {
+    filter: brightness(0.85) sepia(0.2);
+    width: 10rem;
+    height: 15rem;
+    background-size: cover;
+    transition: all 0.5s;
+
+    &:hover {
+      filter: none;
+    }
+
+    .nameChamp {
+      display: flex;
+      height: 15rem;
+
+      p {
+        width: 10rem;
+        background: rgb(6, 27, 36);
+        background: linear-gradient(
+          0deg,
+          rgba(6, 27, 36, 1) 19%,
+          rgba(6, 26, 34, 0.8294849023090586) 48%,
+          rgba(5, 24, 32, 0.6269982238010657) 93%
+        );
+        padding: 10px 0;
+        margin: 0;
+        align-self: flex-end;
+        text-align: center;
+        backdrop-filter: blur(2px);
+      }
+    }
+  }
+}

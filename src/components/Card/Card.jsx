@@ -8,7 +8,7 @@ function Card({ data }) {
 
   return (
     <div className={styles.Card}>
-      <Link href="/champ">
+      <Link href={`/champ/${name}`}>
         <div
           className={styles.cardImg}
           style={{

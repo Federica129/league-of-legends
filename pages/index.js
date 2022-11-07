@@ -1,7 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import CardList from "../src/components/CardList/cardList";
+// import CardList from "../src/components/CardList/cardList";
 import Navbar from "../src/components/Navbar/Navbar";
+import InfoChamp from "../src/components/InfoChamp/InfoChamp";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <CardList />
+      <InfoChamp />
     </div>
   );
 }

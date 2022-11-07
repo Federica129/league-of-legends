@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { GET } from "../../utils/api.js";
-import Card from "../Card/Card";
+import { GET } from "../../src/utils/api";
+import Card from "../../src/components/Card/Card";
 import styles from "./index.module.scss";
 
-const cardList = () => {
+const champ = () => {
   const [champ, setChamp] = useState([]);
   const info = [];
 
   useEffect(() => {
-    GET("en_US").then((data) => {
+    GET("en_US", "").then((data) => {
       setChamp(data?.data);
     });
   }, []);
@@ -26,4 +26,4 @@ const cardList = () => {
   );
 };
 
-export default cardList;
+export default champ;

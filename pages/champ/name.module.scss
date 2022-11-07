@@ -1,0 +1,155 @@
+.name {
+  height: max-content;
+  background-size: cover;
+
+  .overlay {
+    padding: 18px 40px;
+    height: max-content;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5606617647058824) 24%,
+      rgba(0, 0, 0, 0.76234243697479) 70%
+    );
+
+    .info {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.712);
+      h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+      h3 {
+        margin: 0;
+        color: rgb(173, 173, 173);
+        font-size: 1.1rem;
+      }
+      h4 {
+        color: #c19e59;
+        margin: 0 0 10px 0;
+        font-size: 0.8rem;
+      }
+    }
+
+    .skin {
+      h2 {
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.712);
+        font-size: 1.2rem;
+      }
+
+      .btn {
+        display: flex;
+        justify-content: end;
+        gap: 5px;
+
+        button {
+          background-color: #c19e59;
+          border: none;
+          border-radius: 100%;
+          font-size: 1.3rem;
+          height: 32px;
+          transition: 0.5s;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #c29742;
+            transition: 0.5s;
+          }
+
+          svg {
+            height: 30px;
+            color: white;
+          }
+        }
+      }
+
+      .cardSkin {
+        display: flex;
+        gap: 10px;
+        overflow-x: hidden;
+        padding: 20px 0;
+      }
+
+      .Card {
+        border: 1px solid rgb(49, 49, 49);
+        width: fit-content;
+        transition: all 0.3s;
+
+        &:hover {
+          border-left: 1px solid rgb(255, 255, 75);
+          border-top: 1px solid rgb(255, 255, 75);
+          border-right: 1px solid rgb(202, 202, 0);
+          border-bottom: 1px solid rgb(202, 202, 0);
+        }
+
+        .cardImg {
+          filter: brightness(0.85) sepia(0.2);
+          width: 10rem;
+          height: 15rem;
+          background-size: cover;
+          transition: all 0.5s;
+
+          &:hover {
+            filter: none;
+          }
+
+          .nameChamp {
+            display: flex;
+            height: 15rem;
+
+            p {
+              width: 10rem;
+              background: rgb(6, 27, 36);
+              background: linear-gradient(
+                0deg,
+                rgba(6, 27, 36, 1) 19%,
+                rgba(6, 26, 34, 0.8294849023090586) 48%,
+                rgba(5, 24, 32, 0.6269982238010657) 93%
+              );
+              padding: 10px 0;
+              margin: 0;
+              align-self: flex-end;
+              text-align: center;
+              backdrop-filter: blur(2px);
+            }
+          }
+        }
+      }
+    }
+
+    .btn2 {
+      display: flex;
+      justify-content: center;
+
+      span {
+        border: 1px solid white;
+        border-top-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        z-index: 2;
+        transition: 0.3s;
+        width: 190px;
+        height: 65px;
+        position: absolute;
+
+        &:hover {
+          border-top-left-radius: 0px;
+          border-bottom-right-radius: 0px;
+          transition: 0.3s;
+        }
+      }
+
+      button {
+        margin: 5px;
+        background-color: rgb(11, 198, 227);
+        color: black;
+        padding: 20px;
+        font-weight: 600;
+        width: 180px;
+        border: none;
+        cursor: pointer;
+        z-index: 1;
+      }
+    }
+  }
+}

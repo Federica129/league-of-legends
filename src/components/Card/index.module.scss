@@ -2,6 +2,7 @@
   border: 1px solid rgb(49, 49, 49);
   width: fit-content;
   transition: all 0.3s;
+  cursor: pointer;
 
   &:hover {
     border-left: 1px solid rgb(255, 255, 75);

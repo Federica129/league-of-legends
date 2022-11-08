@@ -17,7 +17,6 @@ const Champ = () => {
   useEffect(() => {
     GET("en_US", `/${name}`).then((data) => {
       setInfoChamp(data.data[name]);
-      console.log(data);
     });
   }, [name]);
 
@@ -52,18 +51,45 @@ const Champ = () => {
     <div
       className={styles.name}
       style={{
-        backgroundImage: `url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${infoChamp.id}_${num}.jpg)`,
+        backgroundImage: `url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${infoChamp?.id}_${num}.jpg)`,
       }}
     >
       <div className={styles.overlay}>
         <div className={styles.info}>
-          <h1>{infoChamp.id}</h1>
-          <h3>{infoChamp.title}</h3>
+          <h1>{infoChamp?.name}</h1>
+          <h3>{infoChamp?.title}</h3>
           <h4>{infoChamp?.tags?.join(" ")}</h4>
-          <p>{infoChamp.blurb}</p>
+          <p>{infoChamp?.blurb}</p>
+        </div>
+        <div className={styles.abilities}>
+          <h2>Abilities</h2>
+          <div className={styles.passive}>
+            <div>
+              <img
+                src={`http://ddragon.leagueoflegends.com/cdn/12.21.1/img/passive/${infoChamp?.passive?.image?.full}`}
+              />
+              <h4>P - {infoChamp?.passive?.name}</h4>
+            </div>
+            <p>{infoChamp?.passive?.description}</p>
+          </div>
+          {infoChamp?.spells?.map((e, i) => {
+            return (
+              <div className={styles.spell}>
+                <div>
+                  <img
+                    src={`http://ddragon.leagueoflegends.com/cdn/12.21.1/img/spell/${e.image?.full}`}
+                  />
+                  <h4>
+                    {e.id.substring(e.id.length - 1)} - {e.name}
+                  </h4>
+                </div>
+                <p>{e.description}</p>
+              </div>
+            );
+          })}{" "}
         </div>
         <div className={styles.skin}>
-          <h2>Skins:</h2>
+          <h2>Skins</h2>
           <div className={styles.btn}>
             <button onClick={Prev}>
               <HiArrowSmLeft />
@@ -97,7 +123,7 @@ const Champ = () => {
           </div>
         </div>
         <div className={styles.btn2}>
-          <Link href="/">
+          <Link href="/champ">
             <span></span>
             <button>Prev page..</button>
           </Link>

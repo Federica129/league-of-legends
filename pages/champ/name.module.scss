@@ -15,15 +15,18 @@
 
     .info {
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.712);
+
       h1 {
         margin: 0;
         font-size: 2rem;
       }
+
       h3 {
         margin: 0;
         color: rgb(173, 173, 173);
         font-size: 1.1rem;
       }
+
       h4 {
         color: #c19e59;
         margin: 0 0 10px 0;
@@ -31,11 +34,43 @@
       }
     }
 
+    .abilities {
+      .passive,
+      .spell {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.712);
+        padding: 5px 0;
+        display: flex;
+        gap: 5px;
+
+        div {
+          display: flex;
+          width: 35%;
+          gap: 10px;
+
+          img {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgb(49, 49, 49);
+          }
+
+          h4 {
+            margin: 5px 0;
+            align-self: center;
+          }
+        }
+
+        p {
+          margin: 5px 0;
+          width: 75%;
+          align-self: center;
+        }
+      }
+    }
+
     .skin {
       h2 {
-        margin: 0;
+        margin-bottom: 5px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.712);
-        font-size: 1.2rem;
       }
 
       .btn {

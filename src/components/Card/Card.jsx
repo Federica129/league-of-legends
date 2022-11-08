@@ -3,12 +3,12 @@ import styles from "./index.module.scss";
 import Link from "next/link";
 
 function Card({ data }) {
-  const { name } = data;
+  const { name, id } = data;
   const pngImg = data.image.full.split(".")[0];
 
   return (
     <div className={styles.Card}>
-      <Link href={`/champ/${name}`}>
+      <Link href={`/champ/${id}`}>
         <div
           className={styles.cardImg}
           style={{

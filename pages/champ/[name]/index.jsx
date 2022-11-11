@@ -1,7 +1,7 @@
 import styles from "./name.module.scss";
 
 import { useRouter } from "next/router";
-import { GET } from "../../src/utils/api";
+import { GET } from "../../../src/utils/api";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
 import Link from "next/link";
@@ -13,6 +13,8 @@ const Champ = () => {
   const [num, setNum] = useState(0);
   const refImg = useRef(null);
   const refContainer = useRef(null);
+
+  const keySpell = ["Q", "W", "E", "R"];
 
   useEffect(() => {
     GET("en_US", `/${name}`).then((data) => {
@@ -27,25 +29,6 @@ const Champ = () => {
   const Prev = useCallback(() => {
     refContainer.current.scrollLeft -= refImg.current.offsetWidth;
   }, []);
-
-  // const {
-  //   id,
-  //   key,
-  //   title,
-  //   image,
-  //   skins,
-  //   lore,
-  //   blurb,
-  //   allytips,
-  //   enemytips,
-  //   tags,
-  //   partype,
-  //   info,
-  //   stats,
-  //   spells,
-  //   passive,
-  //   recommended,
-  // } = infoChamp;
 
   return (
     <div
@@ -68,7 +51,9 @@ const Champ = () => {
               <img
                 src={`http://ddragon.leagueoflegends.com/cdn/12.21.1/img/passive/${infoChamp?.passive?.image?.full}`}
               />
-              <h4>P - {infoChamp?.passive?.name}</h4>
+              <h4>
+                {infoChamp?.test}P - {infoChamp?.passive?.name}
+              </h4>
             </div>
             <p>{infoChamp?.passive?.description}</p>
           </div>
@@ -79,14 +64,14 @@ const Champ = () => {
                   <img
                     src={`http://ddragon.leagueoflegends.com/cdn/12.21.1/img/spell/${e.image?.full}`}
                   />
-                  <h4>
-                    {e.id.substring(e.id.length - 1)} - {e.name}
+                  <h4 className={styles.tasti}>
+                    {keySpell[i]} - {e.name}
                   </h4>
                 </div>
                 <p>{e.description}</p>
               </div>
             );
-          })}{" "}
+          })}
         </div>
         <div className={styles.skin}>
           <h2>Skins</h2>

@@ -16,7 +16,7 @@ const champ = () => {
   for (let key in champ) {
     info.push(champ[key]);
   }
-  console.log(info);
+
   return (
     <div className={styles.CardList}>
       {info?.map((champions, i) => (

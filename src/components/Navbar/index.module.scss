@@ -1,5 +1,81 @@
 .Navbar {
   background-color: #061b24;
-  height: 80px;
-  border-bottom: 1px solid white;
+  height: 55px;
+  border-bottom: 1px solid #0e3d53;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: fixed;
+  width: 100vw;
+  z-index: 99;
+  font-weight: bold;
+
+  p {
+    span {
+      color: #c28f2c;
+    }
+  }
+
+  .list {
+    ul {
+      list-style-type: none;
+      display: flex;
+      gap: 15px;
+      padding: 0;
+
+      li {
+        p {
+          padding: 3px;
+          margin: 0;
+          text-align: center;
+          margin-bottom: 5px;
+        }
+        div {
+          width: 90px;
+          height: 3px;
+          background-color: #061b24;
+          border-radius: 10px;
+        }
+      }
+
+      li:hover {
+        p {
+          margin-top: 0;
+          background-color: rgba(87, 87, 87, 0.418);
+          border-radius: 5px;
+        }
+
+        div {
+          background-color: #c28f2c;
+        }
+      }
+    }
+  }
+
+  .select {
+    display: flex;
+    gap: 15px;
+
+    select {
+      align-self: center;
+      height: 22px;
+      background-color: #061b24;
+      border: none;
+      color: #c28f2c;
+      font-weight: bold;
+      transition: all 0.3s;
+      text-align: center;
+      padding-top: 5px;
+      &:active {
+        border: none;
+      }
+      &:focus {
+        color: white;
+      }
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
 }

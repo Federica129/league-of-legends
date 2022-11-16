@@ -6,7 +6,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
 import Link from "next/link";
 
-const Champ = () => {
+const Champ = ({ lang }) => {
   const router = useRouter();
   const { name } = router.query;
   const [infoChamp, setInfoChamp] = useState([]);
@@ -17,10 +17,10 @@ const Champ = () => {
   const keySpell = ["Q", "W", "E", "R"];
 
   useEffect(() => {
-    GET("en_US", `/${name}`).then((data) => {
+    GET(lang, `/${name}`).then((data) => {
       setInfoChamp(data.data[name]);
     });
-  }, [name]);
+  }, [name, lang]);
 
   const Next = useCallback(() => {
     refContainer.current.scrollLeft += refImg.current.offsetWidth;

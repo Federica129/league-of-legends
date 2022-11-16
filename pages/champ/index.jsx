@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { GET } from "../../src/utils/api";
 import Card from "../../src/components/Card/Card";
 import styles from "./index.module.scss";
 
-const champ = () => {
+const champ = ({ lang }) => {
   const [champ, setChamp] = useState([]);
   const info = [];
 
   useEffect(() => {
-    GET("en_US", "").then((data) => {
+    GET(lang, "").then((data) => {
       setChamp(data?.data);
     });
-  }, []);
+  }, [lang]);
 
   for (let key in champ) {
     info.push(champ[key]);

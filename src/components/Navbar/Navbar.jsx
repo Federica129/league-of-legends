@@ -18,6 +18,12 @@ const Navbar = ({ setLang }) => {
       </p>
       <div className={styles.list}>
         <ul>
+          <Link href="/">
+            <li>
+              <p>Home</p>
+              <div></div>
+            </li>
+          </Link>
           <Link href="/champ">
             <li>
               <p>Champions</p>

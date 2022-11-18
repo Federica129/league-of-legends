@@ -2,11 +2,12 @@ import styles from "./name.module.scss";
 
 import { useRouter } from "next/router";
 import { GET } from "../../../src/utils/api";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback, useContext } from "react";
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
 import Link from "next/link";
+import { Prova } from "../../_app";
 
-const Champ = ({ lang }) => {
+const Champ = () => {
   const router = useRouter();
   const { name } = router.query;
   const [infoChamp, setInfoChamp] = useState([]);
@@ -15,6 +16,8 @@ const Champ = ({ lang }) => {
   const refContainer = useRef(null);
 
   const keySpell = ["Q", "W", "E", "R"];
+
+  const lang = useContext(Prova);
 
   useEffect(() => {
     GET(lang, `/${name}`).then((data) => {

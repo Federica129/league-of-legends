@@ -22,13 +22,14 @@ a {
   }
   body {
     color: white;
-    background: rgb(23, 97, 129);
+    /* background: rgb(23, 97, 129);
     background: linear-gradient(
       0deg,
       rgba(23, 97, 129, 1) 0%,
       rgba(22, 87, 113, 1) 13%,
       rgba(10, 40, 54, 1) 39%,
       rgba(6, 27, 36, 1) 74%
-    );
+    ); */
+    background-color: #061b24;
   }
 }

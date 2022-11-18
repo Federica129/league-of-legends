@@ -1,7 +1,8 @@
 import "../styles/globals.css";
 import Navbar from "../src/components/Navbar/Navbar";
 import Head from "next/head";
-import { useState } from "react";
+import { useState, createContext } from "react";
+export const Prova = createContext();
 
 function MyApp({ Component, pageProps }) {
   const [lang, setLang] = useState("en_US");
@@ -14,7 +15,9 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar setLang={setLang} lang={lang} />
-      <Component lang={lang} setLang={setLang} {...pageProps} />
+      <Prova.Provider value={lang}>
+        <Component {...pageProps} />
+      </Prova.Provider>{" "}
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 const GET = async (lang, name) => {
   const res = await fetch(
-    "http://ddragon.leagueoflegends.com/cdn/12.20.1/data/" +
+    "http://ddragon.leagueoflegends.com/cdn/12.22.1/data/" +
       lang +
       "/champion" +
       name +

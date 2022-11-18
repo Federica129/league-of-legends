@@ -1,0 +1,20 @@
+.MainInput {
+  form {
+    input {
+      width: 145px;
+      background-color: transparent;
+      color: white;
+      border-bottom: 2px solid #c28f2c;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      transition: 0.5s;
+
+      &:focus {
+        outline: none;
+        transition: 0.5s;
+        border-bottom: 2px solid #0e3d53;
+      }
+    }
+  }
+}

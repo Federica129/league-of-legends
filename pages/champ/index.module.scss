@@ -1,7 +1,45 @@
-.CardList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 2fr));
-  grid-gap: 1rem;
-  padding: 20px 40px;
-  padding-top: 55px;
+.Champ {
+  padding: 55px 40px 0 0;
+
+  .box {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    background-color: #061b24;
+    display: flex;
+    padding-left: 40px;
+
+    div {
+      padding-top: 10px;
+    }
+
+    .tags {
+      list-style-type: none;
+      margin: 15px 0;
+      color: #c28f2c;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0;
+
+      li {
+        padding: 3px 0;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      li:hover {
+        text-shadow: 0 0 4px rgba(255, 255, 255, 0.507);
+      }
+    }
+  }
+
+  .CardList {
+    width: calc(100vw - 250px);
+    position: relative;
+    left: 210px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 2fr));
+    grid-gap: 1rem;
+    padding: 20px 0;
+  }
 }

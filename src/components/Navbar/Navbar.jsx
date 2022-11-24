@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 
 const Navbar = ({ setLang }) => {
@@ -30,7 +30,7 @@ const Navbar = ({ setLang }) => {
               <div></div>
             </li>
           </Link>
-          <Link href="/aboutme">
+          <Link href="/about_me">
             <li>
               <p>About me</p>
               <div></div>
@@ -41,11 +41,11 @@ const Navbar = ({ setLang }) => {
       <div className={styles.select}>
         <p>Lang :</p>
         <select id="lang" name="lang" onChange={(e) => setLang(e.target.value)}>
-          {dataLang?.map((e) => {
+          {dataLang?.map((e, i) => {
             return (
-              <>
+              <Fragment key={i}>
                 <option value={e}>{e.split("_")[1]}</option>
-              </>
+              </Fragment>
             );
           })}
         </select>

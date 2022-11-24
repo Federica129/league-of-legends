@@ -1,10 +1,14 @@
 import styles from "./index.module.scss";
 
-const MainInput = () => {
+const MainInput = ({ setValueInput }) => {
   return (
     <div className={styles.MainInput}>
       <form>
-        <input type="text" placeholder="Search a champion.." />
+        <input
+          onChange={(event) => setValueInput(event.target.value)}
+          type="text"
+          placeholder="Search a champion.."
+        />
       </form>
     </div>
   );

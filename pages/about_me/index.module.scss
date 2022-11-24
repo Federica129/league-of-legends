@@ -1,0 +1,151 @@
+.about {
+  text-shadow: 1px 1px 2px black;
+  padding-top: 55px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+      ellipse at center,
+      rgba(12, 12, 144, 0.3) 0%,
+      rgba(0, 0, 0, 0) 70%
+    ),
+    /* niebieski */
+      radial-gradient(ellipse at center, #c2902c76 0%, rgba(0, 0, 0, 0) 70%),
+    /*czerwony */
+      radial-gradient(ellipse at center, #c2902c52 0%, rgba(0, 0, 0, 0) 70%)
+      /*sfondo */ #061b24;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: 1200px 1200px, 1200px 1200px, 1200px 1200px;
+  background-attachment: fixed;
+  animation: AnimateBG 8s ease infinite;
+
+  .container {
+    h1 {
+      text-align: center;
+    }
+
+    .box {
+      background-color: rgba(235, 235, 235, 0.104);
+      backdrop-filter: blur(30px);
+      box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.331);
+      display: flex;
+      gap: 30px;
+      padding: 30px 50px;
+
+      .box2 {
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
+
+        .hi {
+          opacity: 0;
+
+          &.active {
+            opacity: 1;
+            transition: all 1s;
+            transition-delay: 0.5s;
+          }
+        }
+
+        .who {
+          opacity: 0;
+
+          &.active {
+            opacity: 1;
+            transition: all 1s;
+            transition-delay: 2s;
+          }
+        }
+
+        .lang {
+          opacity: 0;
+
+          &.active {
+            opacity: 1;
+            transition: all 1s;
+            transition-delay: 4.5s;
+          }
+        }
+
+        p {
+          margin: 0;
+          font-size: larger;
+
+          &:nth-child(4) {
+            font-weight: bold;
+            font-size: smaller;
+            text-align: center;
+            margin: 20px 0 0 0;
+          }
+        }
+
+        .Name {
+          opacity: 0;
+          margin: 0;
+          color: #c28f2c;
+
+          &.active {
+            opacity: 1;
+            transition: all 1s;
+            transition-delay: 0.5s;
+          }
+        }
+
+        .list {
+          opacity: 0;
+          ul {
+            list-style-type: none;
+            padding: 0;
+
+            li {
+              cursor: pointer;
+              transition: all 0.5s;
+              border-bottom: 1px solid rgba(255, 0, 0, 0);
+              width: max-content;
+
+              span {
+                color: #c28f2c;
+              }
+
+              &:hover {
+                border-bottom: 1px solid #c28f2c;
+              }
+            }
+          }
+          &.active {
+            opacity: 1;
+            transition: all 1s;
+            transition-delay: 4.5s;
+          }
+        }
+      }
+
+      .image {
+        opacity: 0;
+        align-self: center;
+        border-radius: 100px;
+        box-shadow: inset 0 0 2px 1px rgb(0 0 0 / 22%);
+
+        &.active {
+          opacity: 1;
+          transition: all 1s;
+          transition-delay: 3s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 10% 10%, 200% 200%, -10% 200%, 200% 10%;
+  }
+  50% {
+    background-position: 150% 100%, -100% 100%, 100% 0%, 0% 100%;
+  }
+  100% {
+    background-position: 10% 10%, 200% 200%, -10% 200%, 200% 10%;
+  }
+}

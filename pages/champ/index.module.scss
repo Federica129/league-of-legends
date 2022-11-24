@@ -1,11 +1,20 @@
 .Champ {
   padding: 55px 40px 0 0;
+  background: rgb(23, 97, 129);
+  background: linear-gradient(
+    0deg,
+    rgba(23, 97, 129, 1) 0%,
+    rgba(22, 87, 113, 1) 10%,
+    rgba(10, 40, 54, 1) 30%,
+    rgba(6, 27, 36, 1) 74%
+  );
+  height: 100vh;
 
   .box {
     width: 200px;
     height: 100vh;
     position: fixed;
-    background-color: #061b24;
+    // background-color: #061b24;
     display: flex;
     padding-left: 40px;
 
@@ -25,6 +34,7 @@
         padding: 3px 0;
         transition: all 0.3s;
         cursor: pointer;
+        width: fit-content;
       }
 
       li:hover {
@@ -35,11 +45,35 @@
 
   .CardList {
     width: calc(100vw - 250px);
+    height: calc(100vh - 55px);
     position: relative;
     left: 210px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 2fr));
     grid-gap: 1rem;
     padding: 20px 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: visible;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      height: 0px;
+    }
+  }
+
+  .error {
+    height: calc(80vh - 55px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      margin: 0;
+      align-self: center;
+      font-weight: bold;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.507);
+    }
   }
 }

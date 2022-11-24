@@ -26,11 +26,19 @@ const Champ = () => {
   }, [name, lang]);
 
   const Next = useCallback(() => {
-    refContainer.current.scrollLeft += refImg.current.offsetWidth;
+    refContainer.current.scroll({
+      top: 0,
+      left: refContainer.current.scrollLeft + refImg.current.offsetWidth + 400,
+      behavior: "smooth",
+    });
   }, []);
 
   const Prev = useCallback(() => {
-    refContainer.current.scrollLeft -= refImg.current.offsetWidth;
+    refContainer.current.scroll({
+      top: 0,
+      left: refContainer.current.scrollLeft - refImg.current.offsetWidth - 400,
+      behavior: "smooth",
+    });
   }, []);
 
   return (

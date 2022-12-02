@@ -9,12 +9,8 @@ import poro from "./poro.gif";
 
 const champ = () => {
   const [champ, setChamp] = useState([]);
-
-  const [info, setInfo] = useState([]);
   const [valueInput, setValueInput] = useState("");
   const [tag, setTag] = useState("");
-  const [arrayChamp, setArrayChamp] = useState([]);
-  // const arrayChamp = [];
   const arrayTags = [
     "Assassin",
     "Fighter",
@@ -23,6 +19,8 @@ const champ = () => {
     "Support",
     "Tank",
   ];
+
+  const [champWithBox, setChampWithBox] = useState([]);
 
   const lang = useContext(Prova);
 
@@ -66,7 +64,14 @@ const champ = () => {
       </div>
       <div className={styles.CardList}>
         {champ.length > 0 ? (
-          champ.map((champions, i) => <Card key={i} data={champions} />)
+          champ.map((champions, i) => (
+            <Card
+              key={i}
+              data={champions}
+              champWithBox={champWithBox}
+              setChampWithBox={setChampWithBox}
+            />
+          ))
         ) : (
           <div className={styles.error}>
             <Image width="150" src={poro} alt="photo poro" />

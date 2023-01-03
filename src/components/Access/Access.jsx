@@ -62,8 +62,8 @@ const Access = () => {
           <MainInput placeholder="Your name.." />
           <p>Scegli la tua icona</p>
           <div className={styles.box}>
-            {icons.map((icon) => (
-              <img width="70" height="70" src={icon.src} alt="photo" />
+            {icons.map((icon, i) => (
+              <img key={i} width="70" height="70" src={icon.src} alt="photo" />
             ))}
           </div>
           <button>Register</button>

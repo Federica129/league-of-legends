@@ -5,7 +5,7 @@ import Federica from "./me.jpg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const about = () => {
+const About = () => {
   const [isActive, setActive] = useState("");
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const about = () => {
         <div className={styles.box}>
           <div className={styles.box2}>
             <div>
-              <p className={`${styles.hi} ${isActive}`}>Hi! I'm</p>
+              <p className={`${styles.hi} ${isActive}`}>Hi! I{"'"}m</p>
               <h2 className={`${styles.Name} ${isActive}`}>
                 Federica Schillaci
               </h2>
@@ -80,4 +80,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;

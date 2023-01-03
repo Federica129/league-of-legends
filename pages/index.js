@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <div className={styles.container}>
-        <Image className={styles.gif} src={gifCait} />
+        <Image alt="gif" className={styles.gif} src={gifCait} />
       </div>{" "}
       <div className={styles.box}>
         <Access />

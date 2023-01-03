@@ -7,7 +7,7 @@ import MainInput from "../../src/components/MainInput";
 import Image from "next/image";
 import poro from "./poro.gif";
 
-const champ = () => {
+const Champ = () => {
   const [champ, setChamp] = useState([]);
   const [valueInput, setValueInput] = useState("");
   const [tag, setTag] = useState("");
@@ -86,4 +86,4 @@ const champ = () => {
   );
 };
 
-export default champ;
+export default Champ;

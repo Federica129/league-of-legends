@@ -60,6 +60,7 @@ const Champ = () => {
           <div className={styles.passive}>
             <div>
               <img
+                alt="passive"
                 src={`http://ddragon.leagueoflegends.com/cdn/12.21.1/img/passive/${infoChamp?.passive?.image?.full}`}
               />
               <h4>
@@ -70,9 +71,10 @@ const Champ = () => {
           </div>
           {infoChamp?.spells?.map((e, i) => {
             return (
-              <div className={styles.spell}>
+              <div key={i} className={styles.spell}>
                 <div>
                   <img
+                    alt="spell"
                     src={`http://ddragon.leagueoflegends.com/cdn/12.21.1/img/spell/${e.image?.full}`}
                   />
                   <h4 className={styles.tasti}>

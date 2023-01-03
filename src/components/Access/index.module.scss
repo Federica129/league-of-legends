@@ -1,0 +1,10 @@
+.Access {
+  height: calc(100vh - 80px);
+  padding-top: 55px;
+
+  .box {
+    display: grid;
+    grid-template-rows: repeat(2, 80px);
+    grid-template-columns: repeat(5, 80px);
+  }
+}

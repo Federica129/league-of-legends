@@ -42,7 +42,10 @@ const champ = () => {
     <div className={styles.Champ}>
       <div className={styles.box}>
         <div>
-          <MainInput setValueInput={setValueInput} />
+          <MainInput
+            setValueInput={setValueInput}
+            placeholder="Search a champion.."
+          />
           <ul className={styles.tags}>
             <li
               onClick={() => setTag("")}

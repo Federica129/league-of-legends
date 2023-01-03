@@ -1,8 +1,8 @@
 {
   "root": true,
-  "extends": ["plugin:react/recommended"],
+  "extends": ["plugin:react/recommended", "plugin:json/recommended"],
   "rules": {
-    "plugin": ["react/recommended"],
+    "plugin": ["react/recommended, json/recommended"],
     "no-unused-vars": [
       "error",
       {

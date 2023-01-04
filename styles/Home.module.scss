@@ -12,11 +12,18 @@
 
 .box {
   z-index: 2;
-  background-color: #061b24;
+  background: rgb(23, 97, 129);
+  background: linear-gradient(
+    0deg,
+    rgba(23, 97, 129, 1) 0%,
+    rgba(22, 87, 113, 1) 10%,
+    rgba(10, 40, 54, 1) 30%,
+    rgba(6, 27, 36, 1) 74%
+  );
   position: absolute;
   top: 0;
   width: 58%;
   height: 100vh;
   border-right: 1px solid #0e3d53;
-  padding: 40px;
+  padding: 55px 40px;
 }

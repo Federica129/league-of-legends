@@ -1,10 +1,134 @@
 .Access {
   height: calc(100vh - 80px);
   padding-top: 55px;
+  display: flex;
+  flex-direction: column;
 
-  .box {
+  .mainBtn {
+    display: flex;
+    justify-content: center;
+  }
+
+  .Register {
+    display: flex;
+    align-items: center;
+    padding: 55px 0;
+    justify-content: space-around;
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .form {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .box2 {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 8px;
+
+        p {
+          margin: 0;
+        }
+
+        input {
+          width: 69px;
+          background: none;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .icons {
     display: grid;
-    grid-template-rows: repeat(2, 80px);
-    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(2, 75px);
+    grid-template-columns: repeat(5, 75px);
+    cursor: pointer;
+
+    img {
+      border: 1px solid #c28f2c;
+
+      &:hover {
+        filter: brightness(1.2);
+        border: 1px solid rgb(255, 255, 75);
+      }
+    }
+  }
+
+  .box3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      border-radius: 100px;
+    }
+  }
+
+  .box4 {
+    display: flex;
+    justify-content: center;
+
+    span {
+      border: 1px solid white;
+      border-top-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      z-index: 2;
+      transition: 0.3s;
+      width: 160px;
+      height: 45px;
+      position: absolute;
+
+      &:hover {
+        border-top-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .Login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 50vh;
+  }
+
+  p {
+    font-weight: 500;
+  }
+
+  button {
+    margin: 5px;
+    background-color: rgb(11, 198, 227);
+    color: black;
+    padding: 10px;
+    font-weight: 600;
+    width: 150px;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.5s;
+
+    &:hover {
+      box-shadow: 0 0 5px 1px rgba(11, 198, 227, 0.23);
+    }
+
+    &:disabled {
+      background-color: rgba(9, 153, 175, 0.455);
+      cursor: default;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
   }
 }

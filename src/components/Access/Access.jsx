@@ -4,17 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 
 const Access = () => {
-  const [visible, setVisible] = useState(true);
-  const [login, setLogin] = useState(false);
-
-  const btnRegister = () => {
-    setVisible(true), setLogin(false);
-  };
-
-  const btnLogin = () => {
-    setVisible(false), setLogin(true);
-  };
-
   const icons = [
     {
       id: 1,
@@ -52,28 +41,91 @@ const Access = () => {
     },
   ];
 
+  const [visible, setVisible] = useState(true);
+  const [login, setLogin] = useState(false);
+  const [icon, setIcon] = useState(icons[0].src);
+  const [color, setColor] = useState("#c28f2c");
+  const [user, setUser] = useState("Name");
+  const [pass, setPass] = useState("");
+
+  const btnRegister = () => {
+    setVisible(true), setLogin(false);
+  };
+
+  const btnLogin = () => {
+    setVisible(false), setLogin(true);
+  };
+
   return (
     <div className={styles.Access}>
-      <button onClick={btnRegister}>Register</button>
-      <button onClick={btnLogin}>Login</button>
+      <div className={styles.mainBtn}>
+        <button onClick={btnRegister} disabled={visible === true}>
+          Register
+        </button>
+        <button onClick={btnLogin} disabled={login === true}>
+          Login
+        </button>
+      </div>
       {visible && (
         <>
-          <h1>Io sono Register</h1>
-          <MainInput placeholder="Your name.." />
-          <p>Scegli la tua icona</p>
-          <div className={styles.box}>
-            {icons.map((icon, i) => (
-              <img key={i} width="70" height="70" src={icon.src} alt="photo" />
-            ))}
+          <div className={styles.Register}>
+            <div className={styles.box}>
+              <div className={styles.form}>
+                <MainInput placeholder="Name" setValueInput={setUser} />
+                <MainInput
+                  type="password"
+                  placeholder="Passowrd"
+                  setValueInput={setPass}
+                />
+              </div>
+              <p>Icon</p>
+              <div className={styles.icons}>
+                {icons.map((icon, i) => (
+                  <img
+                    key={i}
+                    width="65"
+                    height="65"
+                    src={icon.src}
+                    alt="photo"
+                    onClick={() => setIcon(icon.src)}
+                  />
+                ))}
+              </div>
+              <div className={styles.box2}>
+                <p>Border color</p>
+                <input
+                  value={color}
+                  type="color"
+                  onChange={(e) => setColor(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className={styles.box3}>
+              <img
+                width="150"
+                height="150"
+                src={icon}
+                alt="photo"
+                style={{ border: `3px solid ${color}` }}
+              />
+              <h1>{user ? user : setUser("Name")}</h1>
+            </div>
           </div>
-          <button>Register</button>
+          <div className={styles.box4}>
+            <span></span>
+            <button>Register</button>
+          </div>
         </>
       )}
       {login && (
         <>
-          <h1>Io sono Login</h1>
-          <MainInput placeholder="Your name.." />
-          <button>{">"}</button>
+          <div className={styles.Login}>
+            <MainInput placeholder="Name" />
+            <div className={styles.box4}>
+              <span></span>
+              <button>Login</button>
+            </div>
+          </div>
         </>
       )}
     </div>

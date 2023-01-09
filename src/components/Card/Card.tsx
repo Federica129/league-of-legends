@@ -6,11 +6,11 @@ function Card({ champWithBox, data, setChampWithBox }) {
   const { name, id } = data;
   const pngImg = data.image.full.split(".")[0];
 
-  const addChamp = () => {
-    if (champWithBox.includes(champWithBox.find((e) => e === data.key))) {
-      setChampWithBox((prev) => prev.filter((e) => e !== data.key));
+  const addChamp = (): void => {
+    if (champWithBox.includes(champWithBox.find((e: {}) => e === data.key))) {
+      setChampWithBox((prev: []) => prev.filter((e) => e !== data.key));
     } else {
-      setChampWithBox((prev) => [...prev, data.key]);
+      setChampWithBox((prev: []) => [...prev, data.key]);
     }
   };
 
@@ -32,7 +32,9 @@ function Card({ champWithBox, data, setChampWithBox }) {
           </div>
         </Link>
       </div>
-      {champWithBox.includes(champWithBox.find((e) => e === data.key)) ? (
+      {champWithBox.includes(
+        champWithBox.find((event: any) => event === data.key)
+      ) ? (
         <button onClick={addChamp}>Done</button>
       ) : (
         <button onClick={addChamp}>Add</button>

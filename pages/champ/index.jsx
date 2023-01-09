@@ -25,7 +25,7 @@ const Champ = () => {
   const lang = useContext(Prova);
 
   useEffect(() => {
-    GET(lang, "").then((data) => {
+    GET(lang.lang, "").then((data) => {
       setChamp(
         Object.values(data?.data)
           .filter((e) =>

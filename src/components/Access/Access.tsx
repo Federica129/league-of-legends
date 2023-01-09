@@ -1,9 +1,9 @@
 import MainInput from "../MainInput";
 import styles from "./index.module.scss";
-import { useState } from "react";
-import Image from "next/image";
+import { ReactElement, useEffect, useState, useContext } from "react";
+import { Prova } from "../../../pages/_app";
 
-const Access = () => {
+const Access = (): ReactElement => {
   const icons = [
     {
       id: 1,
@@ -45,8 +45,16 @@ const Access = () => {
   const [login, setLogin] = useState(false);
   const [icon, setIcon] = useState(icons[0].src);
   const [color, setColor] = useState("#c28f2c");
-  const [user, setUser] = useState("Name");
+  // const [user, setUser] = useState("Name");
   const [pass, setPass] = useState("");
+
+  const { user, setUser } = useContext(Prova);
+
+  useEffect(() => {
+    if (user.length === 0) {
+      setUser("Name");
+    }
+  }, [user]);
 
   const btnRegister = () => {
     setVisible(true), setLogin(false);
@@ -108,7 +116,7 @@ const Access = () => {
                 alt="photo"
                 style={{ border: `3px solid ${color}` }}
               />
-              <h1>{user ? user : setUser("Name")}</h1>
+              <h1>{user}</h1>
             </div>
           </div>
           <div className={styles.box4}>

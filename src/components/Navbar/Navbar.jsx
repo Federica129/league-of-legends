@@ -13,9 +13,16 @@ const Navbar = ({ setLang }) => {
 
   return (
     <div className={styles.Navbar}>
-      <p>
-        Welcome <span>-nome-</span>
-      </p>
+      <div className={styles.box}>
+        <img
+          width="45"
+          height="45"
+          src="https://cdnb.artstation.com/p/assets/images/images/012/033/999/medium/thomas-randby-npe-ahri.jpg?1532668669"
+          alt="photo"
+          style={{ border: `3px solid red` }}
+        />
+        <span>-nome-</span>
+      </div>
       <div className={styles.list}>
         <ul>
           <Link href="/">

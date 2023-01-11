@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { GET } from "../../src/utils/api";
 import Card from "../../src/components/Card/Card";
 import styles from "./index.module.scss";
-import { Prova } from "../_app";
+import { state } from "../_app";
 import MainInput from "../../src/components/MainInput";
 import Image from "next/image";
 import poro from "./poro.gif";
@@ -22,7 +22,7 @@ const Champ = () => {
 
   const [champWithBox, setChampWithBox] = useState([]);
 
-  const lang = useContext(Prova);
+  const lang = useContext(state);
 
   useEffect(() => {
     GET(lang.lang, "").then((data) => {

@@ -1,15 +1,25 @@
 import styles from "../styles/Home.module.scss";
-import Access from "../src/components/Access/Access";
-import Image from "next/image";
-import gifCait from "./cait.gif";
+import { state } from "./_app";
+import { useContext, useState, useEffect } from "react";
+import { Version } from "../src/utils/api";
+
 export default function Home() {
+  const { user } = useContext(state);
+  // const [version, setVersion] = useState("");
+  // useEffect(() => {
+  // Version().then((data) => console.log(data));
+  //   console.log(Version());
+  // }, []);
+
   return (
     <>
-      <div className={styles.container}>
-        <Image alt="gif" className={styles.gif} src={gifCait} />
-      </div>
-      <div className={styles.box}>
-        <Access />
+      <div className={styles.Home}>
+        <div className={styles.box}>
+          <h1>Hi {user}</h1>
+          <p>
+            Api version: <span>-Numero-</span>
+          </p>
+        </div>
       </div>
     </>
   );

@@ -1,9 +1,11 @@
 import styles from "./index.module.scss";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useContext } from "react";
 import Link from "next/link";
+import { state } from "../../../pages/_app";
 
-const Navbar = ({ setLang }) => {
+const Navbar = () => {
   const [dataLang, setDataLang] = useState([]);
+  const { user, setLang, online, icon, color } = useContext(state);
 
   useEffect(() => {
     fetch("https://ddragon.leagueoflegends.com/cdn/languages.json")
@@ -13,24 +15,28 @@ const Navbar = ({ setLang }) => {
 
   return (
     <div className={styles.Navbar}>
-      <div className={styles.box}>
-        <img
-          width="45"
-          height="45"
-          src="https://cdnb.artstation.com/p/assets/images/images/012/033/999/medium/thomas-randby-npe-ahri.jpg?1532668669"
-          alt="photo"
-          style={{ border: `3px solid red` }}
-        />
-        <span>-nome-</span>
-      </div>
+      {online === true ? (
+        <div className={styles.box}>
+          <img
+            width="45"
+            height="45"
+            src={icon}
+            alt="photo"
+            style={{ border: `2px solid ${color}` }}
+          />
+          <span>{user}</span>
+        </div>
+      ) : null}
       <div className={styles.list}>
         <ul>
-          <Link href="/">
-            <li>
-              <p>Home</p>
-              <div></div>
-            </li>
-          </Link>
+          {online === true ? (
+            <Link href="/">
+              <li>
+                <p>Home</p>
+                <div></div>
+              </li>
+            </Link>
+          ) : null}
           <Link href="/champ">
             <li>
               <p>Champions</p>

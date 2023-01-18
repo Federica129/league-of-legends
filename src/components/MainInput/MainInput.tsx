@@ -16,7 +16,6 @@ const MainInput = ({
           maxLength={20}
           onChange={(event: { target: HTMLInputElement }): void => {
             setValueInput(event.target.value);
-            console.log(event.target);
           }}
           type={type}
           placeholder={placeholder}

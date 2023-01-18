@@ -34,4 +34,4 @@ const GET = async (lang, name, router) => {
   }
 };
 
-export { GET, Version };
+export { GET, Version, arrayVersion };

@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import Navbar from "../src/components/Navbar/Navbar";
 import Head from "next/head";
 import { useState, createContext, useEffect } from "react";
+import { useRouter } from "next/router";
 export const state = createContext();
 
 function MyApp({ Component, pageProps }) {
@@ -44,20 +45,22 @@ function MyApp({ Component, pageProps }) {
 
   const [lang, setLang] = useState("en_US");
   const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
   const [icon, setIcon] = useState(icons[0].src);
   const [online, setOnline] = useState(false);
-  const [pass, setPass] = useState("");
+  const [registed, setRegisted] = useState(false);
   const [color, setColor] = useState("#c28f2c");
+  const router = useRouter();
 
   useEffect(() => {
-    const username = localStorage.setItem(user, "Nickname");
-    const password = localStorage.setItem(pass, "Password");
-  }, [online]);
+    user ? router.push("/") : router.push("/access");
+  }, []);
 
-  const infoUser = {
-    username: user,
-    photo: icon,
-  };
+  useEffect(() => {
+    localStorage.setItem("user", user);
+    localStorage.setItem("pass", pass);
+    localStorage.setItem("icon", icon);
+  }, [registed]);
 
   return (
     <>
@@ -85,6 +88,7 @@ function MyApp({ Component, pageProps }) {
           color,
           setColor,
           icons,
+          setRegisted,
         }}
       >
         <Navbar />

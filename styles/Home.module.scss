@@ -3,4 +3,17 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-image: url("./c-o-frel-lor-21.jpg");
+  background-size: cover;
+
+  .box {
+    background-color: #061b24e9;
+    padding: 8% 20%;
+    border: 1px solid#c28f2c;
+
+    span {
+      color: #c28f2c;
+      font-weight: 600;
+    }
+  }
 }

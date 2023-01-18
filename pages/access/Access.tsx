@@ -23,6 +23,7 @@ const Access = (): ReactElement => {
     color,
     setColor,
     icons,
+    setRegisted,
   } = useContext(state);
 
   useEffect(() => {
@@ -37,6 +38,23 @@ const Access = (): ReactElement => {
 
   const btnLogin = () => {
     setVisible(false), setLogin(true);
+  };
+
+  const registed = (e) => {
+    e.preventDefault();
+    setVisible(false), setLogin(true);
+    setRegisted(true);
+  };
+
+  const access = (e) => {
+    e.preventDefault();
+    if (
+      user === localStorage.getItem("user") &&
+      pass === localStorage.getItem("pass")
+    ) {
+      setOnline(true);
+      router.push("/");
+    }
   };
 
   return (
@@ -60,7 +78,7 @@ const Access = (): ReactElement => {
                     <MainInput placeholder="Name" setValueInput={setUser} />
                     <MainInput
                       type="password"
-                      placeholder="Passoword"
+                      placeholder="Password"
                       setValueInput={setPass}
                     />
                   </div>
@@ -100,10 +118,7 @@ const Access = (): ReactElement => {
               <div className={styles.box4}>
                 <div>
                   <button
-                    onClick={() => {
-                      setOnline(true);
-                      router.push("/");
-                    }}
+                    onClick={registed}
                     disabled={user === "Name" || pass === ""}
                   >
                     Register
@@ -115,15 +130,12 @@ const Access = (): ReactElement => {
           {login && (
             <>
               <div className={styles.Login}>
-                <MainInput placeholder="Name" />
-                <MainInput placeholder="Password" />
+                <MainInput placeholder="Name" setValueInput={setUser} />
+                <MainInput placeholder="Password" setValueInput={setPass} />
                 <div className={styles.box4}>
                   <div>
                     <button
-                      onClick={() => {
-                        setOnline(true);
-                        router.push("/");
-                      }}
+                      onClick={access}
                       disabled={user === "Name" || pass === ""}
                     >
                       Login

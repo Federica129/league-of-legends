@@ -22,10 +22,10 @@ const Champ = () => {
 
   const [champWithBox, setChampWithBox] = useState([]);
 
-  const lang = useContext(state);
+  const { lang, user } = useContext(state);
 
   useEffect(() => {
-    GET(lang.lang, "").then((data) => {
+    GET(lang, "").then((data) => {
       setChamp(
         Object.values(data?.data)
           .filter((e) =>
@@ -39,50 +39,56 @@ const Champ = () => {
   }, [lang, valueInput, tag]);
 
   return (
-    <div className={styles.Champ}>
-      <div className={styles.box}>
-        <div>
-          <MainInput
-            setValueInput={setValueInput}
-            placeholder="Search a champion.."
-          />
-          <ul className={styles.tags}>
-            <li
-              onClick={() => setTag("")}
-              style={tag == "" ? { color: "white" } : { color: "#c28f2c" }}
-            >
-              All
-            </li>
-            {arrayTags.map((tags, i) => (
-              <li
-                key={i}
-                onClick={() => setTag(tags)}
-                style={tag == tags ? { color: "white" } : { color: "#c28f2c" }}
-              >
-                {tags}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className={styles.CardList}>
-        {champ.length > 0 ? (
-          champ.map((champions, i) => (
-            <Card
-              key={i}
-              data={champions}
-              champWithBox={champWithBox}
-              setChampWithBox={setChampWithBox}
-            />
-          ))
-        ) : (
-          <div className={styles.error}>
-            <Image width="150" src={poro} alt="photo poro" />
-            <p>We are sorry, no champions matches your search criteria.</p>
+    <>
+      {user && (
+        <div className={styles.Champ}>
+          <div className={styles.box}>
+            <div>
+              <MainInput
+                setValueInput={setValueInput}
+                placeholder="Search a champion.."
+              />
+              <ul className={styles.tags}>
+                <li
+                  onClick={() => setTag("")}
+                  style={tag == "" ? { color: "white" } : { color: "#c28f2c" }}
+                >
+                  All
+                </li>
+                {arrayTags.map((tags, i) => (
+                  <li
+                    key={i}
+                    onClick={() => setTag(tags)}
+                    style={
+                      tag == tags ? { color: "white" } : { color: "#c28f2c" }
+                    }
+                  >
+                    {tags}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        )}
-      </div>
-    </div>
+          <div className={styles.CardList}>
+            {champ.length > 0 ? (
+              champ.map((champions, i) => (
+                <Card
+                  key={i}
+                  data={champions}
+                  champWithBox={champWithBox}
+                  setChampWithBox={setChampWithBox}
+                />
+              ))
+            ) : (
+              <div className={styles.error}>
+                <Image width="150" src={poro} alt="photo poro" />
+                <p>We are sorry, no champions matches your search criteria.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

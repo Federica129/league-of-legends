@@ -5,10 +5,13 @@ import { state } from "../_app";
 import Image from "next/image";
 import gifCait from "./cait.gif";
 import { useRouter } from "next/router";
+import axios from "axios";
+import dbJson from "../../db.json";
 
 const Access = (): ReactElement => {
   const [visible, setVisible] = useState(true);
   const [login, setLogin] = useState(false);
+  const [arrayUsers, setArrayUsers] = useState([]);
   const router = useRouter();
 
   const {
@@ -16,7 +19,6 @@ const Access = (): ReactElement => {
     setUser,
     pass,
     setPass,
-    online,
     setOnline,
     icon,
     setIcon,
@@ -27,9 +29,13 @@ const Access = (): ReactElement => {
   } = useContext(state);
 
   useEffect(() => {
-    if (user.length === 0) {
+    if (!user) {
       setUser("Name");
     }
+
+    axios
+      .get("http://localhost:8080/users")
+      .then((data) => setArrayUsers(data.data));
   }, [user]);
 
   const btnRegister = () => {
@@ -44,14 +50,23 @@ const Access = (): ReactElement => {
     e.preventDefault();
     setVisible(false), setLogin(true);
     setRegisted(true);
+
+    axios
+      .post("http://localhost:8080/users", { name: user, password: pass })
+      .then((res) => localStorage.setItem("id", res.data.id));
   };
 
   const access = (e) => {
     e.preventDefault();
+    const found = arrayUsers.find(
+      (el) => el.name === user && el.password === pass
+    );
     if (
-      user === localStorage.getItem("user") &&
-      pass === localStorage.getItem("pass")
+      // user === localStorage.getItem("user") &&
+      // pass === localStorage.getItem("pass")
+      found
     ) {
+      localStorage.setItem("id", found.id);
       setOnline(true);
       router.push("/");
     }

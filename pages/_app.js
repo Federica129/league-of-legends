@@ -3,6 +3,7 @@ import Navbar from "../src/components/Navbar/Navbar";
 import Head from "next/head";
 import { useState, createContext, useEffect } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 export const state = createContext();
 
 function MyApp({ Component, pageProps }) {
@@ -50,17 +51,28 @@ function MyApp({ Component, pageProps }) {
   const [online, setOnline] = useState(false);
   const [registed, setRegisted] = useState(false);
   const [color, setColor] = useState("#c28f2c");
+  const [userToken, setUserToken] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    user ? router.push("/") : router.push("/access");
+    if (localStorage.getItem("id")) {
+      axios
+        .get(`http://localhost:8080/users/${localStorage.getItem("id")}`)
+        .then((res) => {
+          setUser(res.data.name);
+          router.push("/");
+          setOnline(true);
+        });
+    } else {
+      router.push("/access");
+    }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("user", user);
-    localStorage.setItem("pass", pass);
-    localStorage.setItem("icon", icon);
-  }, [registed]);
+  // useEffect(() => {
+  //   localStorage.setItem("user", user);
+  //   localStorage.setItem("pass", pass);
+  //   localStorage.setItem("icon", icon);
+  // }, [registed]);
 
   return (
     <>

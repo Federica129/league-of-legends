@@ -30,10 +30,6 @@ const Champ = () => {
     }
   }, [name, lang]);
 
-  useEffect(() => {
-    console.log(isLoading);
-  }, [isLoading]);
-
   const Next = useCallback(() => {
     refContainer.current.scroll({
       top: 0,

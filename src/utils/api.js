@@ -4,17 +4,15 @@ import axios from "axios";
 const arrayVersion = [];
 
 const Version = async function prova() {
-  const res = await fetch(
+  const res = await axios.get(
     "https://ddragon.leagueoflegends.com/api/versions.json"
-  )
-    .then((response) => response.json())
-    .then((data) => arrayVersion.push(data[0]));
+  );
+  arrayVersion.push(res.data[0]);
 };
 Version();
 
 const GET = async (lang, name, router) => {
   try {
-    console.log(arrayVersion);
     const res = await axios.get(
       `http://ddragon.leagueoflegends.com/cdn/${arrayVersion[0]}/data/` +
         lang +

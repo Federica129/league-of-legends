@@ -6,7 +6,6 @@ import Image from "next/image";
 import gifCait from "./cait.gif";
 import { useRouter } from "next/router";
 import axios from "axios";
-import dbJson from "../../db.json";
 
 const Access = (): ReactElement => {
   const [visible, setVisible] = useState(true);
@@ -25,7 +24,6 @@ const Access = (): ReactElement => {
     color,
     setColor,
     icons,
-    setRegisted,
   } = useContext(state);
 
   useEffect(() => {
@@ -46,26 +44,19 @@ const Access = (): ReactElement => {
     setVisible(false), setLogin(true);
   };
 
-  const registed = (e) => {
-    e.preventDefault();
+  const registed = () => {
     setVisible(false), setLogin(true);
-    setRegisted(true);
 
     axios
       .post("http://localhost:8080/users", { name: user, password: pass })
       .then((res) => localStorage.setItem("id", res.data.id));
   };
 
-  const access = (e) => {
-    e.preventDefault();
+  const access = () => {
     const found = arrayUsers.find(
       (el) => el.name === user && el.password === pass
     );
-    if (
-      // user === localStorage.getItem("user") &&
-      // pass === localStorage.getItem("pass")
-      found
-    ) {
+    if (found) {
       localStorage.setItem("id", found.id);
       setOnline(true);
       router.push("/");

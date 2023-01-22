@@ -49,9 +49,7 @@ function MyApp({ Component, pageProps }) {
   const [pass, setPass] = useState("");
   const [icon, setIcon] = useState(icons[0].src);
   const [online, setOnline] = useState(false);
-  const [registed, setRegisted] = useState(false);
   const [color, setColor] = useState("#c28f2c");
-  const [userToken, setUserToken] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -67,12 +65,6 @@ function MyApp({ Component, pageProps }) {
       router.push("/access");
     }
   }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("user", user);
-  //   localStorage.setItem("pass", pass);
-  //   localStorage.setItem("icon", icon);
-  // }, [registed]);
 
   return (
     <>
@@ -100,7 +92,6 @@ function MyApp({ Component, pageProps }) {
           color,
           setColor,
           icons,
-          setRegisted,
         }}
       >
         <Navbar />

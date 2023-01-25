@@ -34,10 +34,10 @@
         transition: all 0.3s;
         cursor: pointer;
         width: fit-content;
-      }
 
-      li:hover {
-        text-shadow: 0 0 4px rgba(255, 255, 255, 0.507);
+        &:hover {
+          text-shadow: 0 0 4px rgba(255, 255, 255, 0.507);
+        }
       }
     }
   }
@@ -73,6 +73,52 @@
       align-self: center;
       font-weight: bold;
       text-shadow: 0 0 4px rgba(0, 0, 0, 0.507);
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Champ {
+    padding: 55px 0px 0 0;
+    display: flex;
+    flex-direction: column;
+
+    .box {
+      width: 100vw;
+      height: min-content;
+      position: relative;
+      padding: 0 30px;
+
+      .tags {
+        display: grid;
+        width: 84vw;
+        grid-template-columns: repeat(4, 92px);
+      }
+
+      div {
+        text-align: center;
+      }
+    }
+
+    .CardList {
+      width: 100vw;
+      position: relative;
+      left: 0px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 2fr));
+      grid-gap: 1rem;
+      padding: 30px;
+    }
+
+    .error {
+      height: min-content;
+
+      p {
+        margin: 0;
+        align-self: center;
+        font-weight: bold;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.507);
+      }
     }
   }
 }

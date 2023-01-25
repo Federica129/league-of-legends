@@ -189,3 +189,71 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .name {
+    .overlay {
+      padding: 18px 25px;
+
+      .abilities {
+        .passive,
+        .spell {
+          padding: 5px 0;
+          flex-direction: column;
+
+          div {
+            width: 87vw;
+          }
+
+          p {
+            width: 87vw;
+          }
+        }
+      }
+
+      .skin {
+        .btn {
+          button {
+            &:hover {
+              background-color: #c19e59;
+            }
+          }
+        }
+
+        .Card {
+          transition: all 0s;
+
+          &:hover {
+            border: 1px solid rgb(49, 49, 49);
+          }
+
+          .cardImg {
+            width: 9.2rem;
+            height: 14rem;
+            background-size: cover;
+            transition: all 0s;
+
+            &:hover {
+              background-size: cover;
+            }
+
+            .nameChamp {
+              height: 14rem;
+
+              p {
+                width: 10rem;
+              }
+            }
+          }
+        }
+
+        .cardSkin {
+          display: flex;
+          gap: 10px;
+          overflow-x: hidden;
+          padding: 20px 0;
+        }
+      }
+    }
+  }
+}

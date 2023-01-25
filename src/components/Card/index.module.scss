@@ -69,3 +69,34 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .box {
+    .Card {
+      transition: all 0s;
+
+      .cardImg {
+        width: 9.2rem;
+        height: 14rem;
+        background-size: cover;
+        transition: all 0s;
+
+        &:hover {
+          background-size: cover;
+        }
+
+        .nameChamp {
+          height: 14rem;
+
+          p {
+            width: 10rem;
+          }
+        }
+      }
+    }
+
+    button {
+      width: 150px;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { state } from "../../../pages/_app";
 
 import { CgMenuGridO } from "react-icons/cg";
 import { MdClose } from "react-icons/md";
+import { TbLogout } from "react-icons/tb";
 
 const Navbar = () => {
   const [dataLang, setDataLang] = useState([]);
@@ -29,18 +30,31 @@ const Navbar = () => {
     }
   }, [active]);
 
+  const logout = useCallback(() => {
+    localStorage.clear();
+    window.location.reload();
+  }, []);
+
   return (
     <div className={styles.Navbar}>
       {online === true ? (
-        <div className={styles.box}>
-          <img
-            width="45"
-            height="45"
-            src={icon}
-            alt="photo"
-            style={{ border: `2px solid ${color}` }}
-          />
-          <span>{user}</span>
+        <div className={styles.user}>
+          <div className={styles.box} onClick={activeModal}>
+            <img
+              width="45"
+              height="45"
+              src={icon}
+              alt="photo"
+              style={{ border: `2px solid ${color}` }}
+            />
+            <span>{user}</span>
+          </div>
+          <div className={`${styles.logout} ${visible}`}>
+            <span>
+              <TbLogout />
+            </span>
+            <p onClick={logout}>Logout</p>
+          </div>
         </div>
       ) : null}
       <div className={styles.list}>
@@ -60,7 +74,22 @@ const Navbar = () => {
                 </li>
               </Link>{" "}
             </>
-          ) : null}
+          ) : (
+            <>
+              <Link
+                href="/access"
+                onClick={() => {
+                  setVisible("");
+                  setActive(false);
+                }}
+              >
+                <li>
+                  <p className={styles.login}>Login</p>
+                  <div></div>
+                </li>
+              </Link>
+            </>
+          )}
           <Link href="/about_me">
             <li>
               <p>About me</p>
@@ -100,7 +129,6 @@ const Navbar = () => {
                 >
                   <li>
                     <p>Home</p>
-                    <div></div>
                   </li>
                 </Link>
                 <Link
@@ -112,11 +140,24 @@ const Navbar = () => {
                 >
                   <li>
                     <p>Champions</p>
-                    <div></div>
                   </li>
                 </Link>{" "}
               </>
-            ) : null}
+            ) : (
+              <>
+                <Link
+                  href="/access"
+                  onClick={() => {
+                    setVisible("");
+                    setActive(false);
+                  }}
+                >
+                  <li>
+                    <p className={styles.login}>Login</p>
+                  </li>
+                </Link>
+              </>
+            )}
             <Link
               href="/about_me"
               onClick={() => {
@@ -126,10 +167,14 @@ const Navbar = () => {
             >
               <li>
                 <p>About me</p>
-                <div></div>
               </li>
             </Link>
           </ul>
+          {online === true && (
+            <div className={styles.logout}>
+              <p onClick={logout}>Logout</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

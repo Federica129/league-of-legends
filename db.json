@@ -6,14 +6,11 @@
       "id": 0
     },
     {
-      "name": "pollo",
+      "name": "Federica129",
       "password": "123",
-      "id": 1
-    },
-    {
-      "name": "345",
-      "password": "345",
-      "id": 2
+      "icon": "https://pbs.twimg.com/media/EVso1FFUwAAMFZ0.jpg",
+      "borderColor": "#2cc3aa",
+      "id": 4
     }
   ]
 }

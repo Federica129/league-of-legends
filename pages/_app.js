@@ -58,8 +58,10 @@ function MyApp({ Component, pageProps }) {
         .get(`http://localhost:8080/users/${localStorage.getItem("id")}`)
         .then((res) => {
           setUser(res.data.name);
-          router.push("/");
+          setColor(res.data.borderColor);
+          setIcon(res.data.icon);
           setOnline(true);
+          router.push("/");
         });
     } else {
       router.push("/access");

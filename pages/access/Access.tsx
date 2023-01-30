@@ -11,6 +11,8 @@ const Access = (): ReactElement => {
   const [visible, setVisible] = useState(true);
   const [login, setLogin] = useState(false);
   const [arrayUsers, setArrayUsers] = useState([]);
+  const [loginFailed, setLoginFailed] = useState(false);
+  const [checkname, setCheckname] = useState({ color: "", phrase: "" });
   const router = useRouter();
 
   const {
@@ -32,6 +34,12 @@ const Access = (): ReactElement => {
       setUser("Name");
     }
 
+    if (arrayUsers.find((el) => el.name === user)) {
+      setCheckname({ color: "red", phrase: "Nickname already exists" });
+    } else {
+      setCheckname({ color: "green", phrase: "Nickname valid" });
+    }
+
     axios
       .get("http://localhost:8080/users")
       .then((data) => setArrayUsers(data.data));
@@ -40,6 +48,7 @@ const Access = (): ReactElement => {
   const btnRegister = () => {
     setVisible(true), setLogin(false);
     setUser("Name");
+    setLoginFailed(false);
   };
 
   const btnLogin = () => {
@@ -67,6 +76,8 @@ const Access = (): ReactElement => {
     if (found) {
       localStorage.setItem("id", found.id);
       window.location.reload();
+    } else {
+      setLoginFailed(true);
     }
   };
 
@@ -96,6 +107,11 @@ const Access = (): ReactElement => {
                           placeholder="Password"
                           setValueInput={setPass}
                         />
+                      </div>
+                      <div className={styles.checkName}>
+                        <p style={{ color: checkname.color }}>
+                          {user !== "Name" && checkname.phrase}
+                        </p>
                       </div>
                       <p>Icon</p>
                       <div className={styles.icons}>
@@ -160,6 +176,14 @@ const Access = (): ReactElement => {
                           Login
                         </button>
                       </div>
+                    </div>
+                    <div className={styles.loginFail}>
+                      {loginFailed && (
+                        <>
+                          <p>Login failed.</p>
+                          <p>Incorrect nickname or password.</p>
+                        </>
+                      )}
                     </div>
                   </div>
                 </>

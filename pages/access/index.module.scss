@@ -51,6 +51,13 @@
               justify-content: space-between;
             }
 
+            .checkName {
+              p {
+                margin: 2px 0;
+                font-size: small;
+              }
+            }
+
             .icons {
               display: grid;
               grid-template-rows: repeat(2, 75px);
@@ -184,6 +191,16 @@
               cursor: default;
             }
           }
+        }
+      }
+
+      .loginFail {
+        color: red;
+        font-size: small;
+        text-align: center;
+
+        p {
+          margin: 2px 0;
         }
       }
 

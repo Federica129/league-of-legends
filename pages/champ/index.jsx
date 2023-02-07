@@ -6,7 +6,6 @@ import { state } from "../_app";
 import MainInput from "../../src/components/MainInput";
 import Image from "next/image";
 import poro from "./poro.gif";
-import axios from "axios";
 
 const Champ = () => {
   const [champ, setChamp] = useState([]);
@@ -23,8 +22,6 @@ const Champ = () => {
   ];
 
   const { lang, user, champWithBox, setChampWithBox } = useContext(state);
-  // const keyChampWithBox = champWithBox.values();
-  // console.log(keyChampWithBox, "eccomi");
 
   useEffect(() => {
     GET(lang, "").then((data) => {

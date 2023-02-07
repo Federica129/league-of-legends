@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     if (localStorage.getItem("id")) {
       axios
-        .get(`http://localhost:8080/users/${localStorage.getItem("id")}`)
+        .get(`http://localhost:8000/users/${localStorage.getItem("id")}`)
         .then((res) => {
           setUser(res.data.name);
           setColor(res.data.borderColor);
@@ -72,7 +72,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if (localStorage.getItem("id")) {
-      axios.patch(`http://localhost:8080/users/${localStorage.getItem("id")}`, {
+      axios.patch(`http://localhost:8000/users/${localStorage.getItem("id")}`, {
         gotbox: champWithBox,
       });
     }

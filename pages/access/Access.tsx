@@ -41,7 +41,7 @@ const Access = (): ReactElement => {
     }
 
     axios
-      .get("http://localhost:8080/users")
+      .get("http://localhost:8000/users")
       .then((data) => setArrayUsers(data.data));
   }, [user]);
 
@@ -59,11 +59,12 @@ const Access = (): ReactElement => {
     setVisible(false), setLogin(true);
 
     axios
-      .post("http://localhost:8080/users", {
+      .post("http://localhost:8000/users", {
         name: user,
         password: pass,
         icon: icon,
         borderColor: color,
+        gotbox: [],
       })
       .then((res) => localStorage.setItem("id", res.data.id));
   };

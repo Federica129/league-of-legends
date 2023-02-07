@@ -48,7 +48,8 @@
     }
   }
 
-  button {
+  .btnAdd,
+  .btnDone {
     border: 1px solid rgb(49, 49, 49);
     margin: 5px 0 0 0;
     width: 162px;
@@ -67,6 +68,15 @@
       border-right: 1px solid rgb(202, 202, 0);
       border-bottom: 1px solid rgb(202, 202, 0);
     }
+  }
+
+  .btnDone {
+    background: rgb(74, 66, 37);
+    background: linear-gradient(
+      180deg,
+      rgb(41, 36, 20) 0%,
+      rgb(61, 53, 33) 74%
+    );
   }
 }
 
@@ -95,8 +105,13 @@
       }
     }
 
-    button {
+    .btnAdd,
+    .btnDone {
       width: 150px;
+
+      &:hover {
+        border: 1px solid rgb(49, 49, 49);
+      }
     }
   }
 }

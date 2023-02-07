@@ -101,7 +101,11 @@ const Access = (): ReactElement => {
                   <div className={styles.containerRegis}>
                     <div className={styles.box1}>
                       <div className={styles.form}>
-                        <MainInput placeholder="Name" setValueInput={setUser} />
+                        <MainInput
+                          maxLength={15}
+                          placeholder="Name"
+                          setValueInput={setUser}
+                        />
                         <MainInput
                           type="password"
                           placeholder="Password"

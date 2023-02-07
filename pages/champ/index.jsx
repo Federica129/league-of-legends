@@ -6,11 +6,13 @@ import { state } from "../_app";
 import MainInput from "../../src/components/MainInput";
 import Image from "next/image";
 import poro from "./poro.gif";
+import axios from "axios";
 
 const Champ = () => {
   const [champ, setChamp] = useState([]);
   const [valueInput, setValueInput] = useState("");
   const [tag, setTag] = useState("");
+
   const arrayTags = [
     "Assassin",
     "Fighter",
@@ -20,9 +22,9 @@ const Champ = () => {
     "Tank",
   ];
 
-  const [champWithBox, setChampWithBox] = useState([]);
-
-  const { lang, user } = useContext(state);
+  const { lang, user, champWithBox, setChampWithBox } = useContext(state);
+  // const keyChampWithBox = champWithBox.values();
+  // console.log(keyChampWithBox, "eccomi");
 
   useEffect(() => {
     GET(lang, "").then((data) => {
@@ -36,7 +38,8 @@ const Champ = () => {
           .filter((e) => (tag ? e.tags.includes(tag) : e))
       );
     });
-  }, [lang, valueInput, tag]);
+    console.log(champWithBox);
+  }, [lang, valueInput, tag, champWithBox]);
 
   return (
     <>
@@ -67,6 +70,12 @@ const Champ = () => {
                   </li>
                 ))}
               </ul>
+              <div className={styles.resetList}>
+                <p>Select champs you earned a box with!</p>
+                {champWithBox.length > 0 && (
+                  <button onClick={() => setChampWithBox([])}>Reset</button>
+                )}
+              </div>
             </div>
           </div>
           <div className={styles.CardList}>

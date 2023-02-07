@@ -19,6 +19,37 @@
 
     div {
       padding-top: 10px;
+
+      .resetList {
+        padding-bottom: 10px;
+        border-top: #0e3d53 1px solid;
+        border-bottom: #0e3d53 1px solid;
+        p {
+          font-size: small;
+          margin: 0;
+        }
+
+        button {
+          border: 1px solid rgb(49, 49, 49);
+          margin: 5px 0 0 0;
+          width: 159px;
+          height: 1.7rem;
+          background: rgb(74, 66, 37);
+          background: linear-gradient(
+            180deg,
+            rgba(74, 66, 37, 1) 0%,
+            rgba(126, 107, 69, 1) 74%
+          );
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.731);
+
+          &:hover {
+            border-left: 1px solid rgb(255, 255, 75);
+            border-top: 1px solid rgb(255, 255, 75);
+            border-right: 1px solid rgb(202, 202, 0);
+            border-bottom: 1px solid rgb(202, 202, 0);
+          }
+        }
+      }
     }
 
     .tags {
@@ -97,6 +128,14 @@
 
       div {
         text-align: center;
+
+        .resetList {
+          button {
+            &:hover {
+              border: 1px solid rgb(49, 49, 49);
+            }
+          }
+        }
       }
     }
 

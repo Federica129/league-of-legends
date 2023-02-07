@@ -1,18 +1,21 @@
-import { memo } from "react";
+import { memo, useContext, useCallback, useEffect } from "react";
 import styles from "./index.module.scss";
 import Link from "next/link";
+import axios from "axios";
+import { state } from "../../../pages/_app";
 
-function Card({ champWithBox, data, setChampWithBox }) {
+function Card({ data }) {
   const { name, id } = data;
   const pngImg = data.image.full.split(".")[0];
+  const { champWithBox, setChampWithBox } = useContext(state);
 
-  const addChamp = (): void => {
-    if (champWithBox.includes(champWithBox.find((e: {}) => e === data.key))) {
+  const addChamp = useCallback(() => {
+    if (champWithBox.includes(data.key)) {
       setChampWithBox((prev: []) => prev.filter((e) => e !== data.key));
     } else {
       setChampWithBox((prev: []) => [...prev, data.key]);
     }
-  };
+  }, [champWithBox]);
 
   return (
     <div className={styles.box}>
@@ -35,9 +38,13 @@ function Card({ champWithBox, data, setChampWithBox }) {
       {champWithBox.includes(
         champWithBox.find((event: any) => event === data.key)
       ) ? (
-        <button onClick={addChamp}>Done</button>
+        <button onClick={addChamp} className={styles.btnDone}>
+          Done
+        </button>
       ) : (
-        <button onClick={addChamp}>Add</button>
+        <button onClick={addChamp} className={styles.btnAdd}>
+          Add
+        </button>
       )}
     </div>
   );

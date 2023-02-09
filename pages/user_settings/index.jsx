@@ -31,7 +31,8 @@ const User_settings = () => {
   const deleteAccount = useCallback(() => {
     client
       .delete(`/users/${localStorage.getItem("id")}`)
-      .then(() => localStorage.clear(), window.location.reload());
+      .then(() => localStorage.clear())
+      .then(() => window.location.reload());
   }, []);
 
   return (

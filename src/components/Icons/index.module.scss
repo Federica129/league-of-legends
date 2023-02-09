@@ -1,0 +1,55 @@
+.ModalIcon {
+  text-align: center;
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+
+    .box2 {
+      .icons {
+        display: grid;
+        grid-template-rows: repeat(2, 75px);
+        grid-template-columns: repeat(5, 75px);
+        cursor: pointer;
+
+        img {
+          border: 1px solid #c28f2c;
+
+          &:hover {
+            filter: brightness(1.2);
+            border: 1px solid rgb(255, 255, 75);
+          }
+        }
+      }
+
+      p {
+        margin-top: 0px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .ModalIcon {
+    .box {
+      width: 100%;
+      justify-content: space-around;
+      border: none;
+
+      .box2 {
+        .icons {
+          padding-left: 7px;
+          grid-template-rows: repeat(2, 67px);
+          grid-template-columns: repeat(5, 67px);
+          img {
+            width: 60px;
+            height: 60px;
+          }
+        }
+      }
+    }
+  }
+}

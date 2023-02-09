@@ -5,7 +5,8 @@ import { state } from "../../../pages/_app";
 
 import { CgMenuGridO } from "react-icons/cg";
 import { MdClose } from "react-icons/md";
-import { TbLogout } from "react-icons/tb";
+import { FiLogOut } from "react-icons/fi";
+import { MdSettings } from "react-icons/md";
 
 const Navbar = () => {
   const [dataLang, setDataLang] = useState([]);
@@ -50,10 +51,20 @@ const Navbar = () => {
             <span>{user}</span>
           </div>
           <div className={`${styles.logout} ${visible}`}>
-            <span>
-              <TbLogout />
-            </span>
-            <p onClick={logout}>Logout</p>
+            <div>
+              <span>
+                <MdSettings />
+              </span>
+              <Link href="/user_settings" onClick={activeModal}>
+                <p>Settings</p>
+              </Link>
+            </div>
+            <div>
+              <span>
+                <FiLogOut />
+              </span>
+              <p onClick={logout}>Logout</p>
+            </div>
           </div>
         </div>
       ) : null}
@@ -141,7 +152,7 @@ const Navbar = () => {
                   <li>
                     <p>Champions</p>
                   </li>
-                </Link>{" "}
+                </Link>
               </>
             ) : (
               <>
@@ -172,6 +183,9 @@ const Navbar = () => {
           </ul>
           {online === true && (
             <div className={styles.logout}>
+              <Link href="/user_settings" onClick={activeModal}>
+                <p>Icon</p>
+              </Link>
               <p onClick={logout}>Logout</p>
             </div>
           )}

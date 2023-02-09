@@ -34,17 +34,21 @@
     }
 
     .logout {
+      width: 100px;
       position: relative;
-      top: -55px;
+      top: -80px;
       background-color: #061b24;
       transition: 0.3s;
       z-index: -1;
       color: rgba(255, 255, 255, 0);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
       padding: 10px 0;
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding-left: 10px;
+      }
 
       span {
         color: #c28f2c;
@@ -143,6 +147,17 @@
   .listModal {
     display: none;
   }
+
+  .modalIcon {
+    display: none;
+
+    &.active {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -222,8 +237,8 @@
         }
 
         .logout {
-          display: flex;
-          justify-content: center;
+          border-top: #0e3d53 1px solid;
+          text-align: center;
           color: #c28f2c;
         }
       }

@@ -21,10 +21,11 @@ const Champ = () => {
     "Tank",
   ];
 
-  const { lang, user, champWithBox, setChampWithBox } = useContext(state);
+  const { lang, user, champWithBox, setChampWithBox, router } =
+    useContext(state);
 
   useEffect(() => {
-    GET(lang, "").then((data) => {
+    GET(lang, "", router).then((data) => {
       setChamp(
         Object.values(data?.data)
           .filter((e) =>
@@ -35,7 +36,6 @@ const Champ = () => {
           .filter((e) => (tag ? e.tags.includes(tag) : e))
       );
     });
-    console.log(champWithBox);
   }, [lang, valueInput, tag, champWithBox]);
 
   return (

@@ -6,6 +6,10 @@ import { useRouter } from "next/router";
 import axios from "axios";
 export const state = createContext();
 
+const client = axios.create({
+  baseURL: "http://localhost:8080",
+});
+
 function MyApp({ Component, pageProps }) {
   const icons = [
     {
@@ -51,20 +55,20 @@ function MyApp({ Component, pageProps }) {
   const [online, setOnline] = useState(false);
   const [color, setColor] = useState("#c28f2c");
   const [champWithBox, setChampWithBox] = useState();
+  const [actModal, setActModal] = useState("");
+  const [visibilityModal, setVisibilityModal] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     if (localStorage.getItem("id")) {
-      axios
-        .get(`http://localhost:8000/users/${localStorage.getItem("id")}`)
-        .then((res) => {
-          setUser(res.data.name);
-          setColor(res.data.borderColor);
-          setIcon(res.data.icon);
-          setOnline(true);
-          setChampWithBox(res.data.gotbox);
-          router.push("/");
-        });
+      client.get(`/users/${localStorage.getItem("id")}`).then((res) => {
+        setUser(res.data.name);
+        setColor(res.data.borderColor);
+        setIcon(res.data.icon);
+        setOnline(true);
+        setChampWithBox(res.data.gotbox);
+        router.push("/");
+      });
     } else {
       router.push("/access");
     }
@@ -72,7 +76,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if (localStorage.getItem("id")) {
-      axios.patch(`http://localhost:8000/users/${localStorage.getItem("id")}`, {
+      client.patch(`/users/${localStorage.getItem("id")}`, {
         gotbox: champWithBox,
       });
     }
@@ -88,7 +92,7 @@ function MyApp({ Component, pageProps }) {
           content="upgrade-insecure-requests"
         />
         <link rel="icon" href="/favicon.ico" />
-      </Head>{" "}
+      </Head>
       <state.Provider
         value={{
           lang,
@@ -106,6 +110,12 @@ function MyApp({ Component, pageProps }) {
           icons,
           champWithBox,
           setChampWithBox,
+          client,
+          router,
+          actModal,
+          setActModal,
+          visibilityModal,
+          setVisibilityModal,
         }}
       >
         <Navbar />

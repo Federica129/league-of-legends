@@ -4,8 +4,6 @@ import { ReactElement, useEffect, useState, useContext } from "react";
 import { state } from "../_app";
 import Image from "next/image";
 import gifCait from "./cait.gif";
-import { useRouter } from "next/router";
-import axios from "axios";
 
 const Access = (): ReactElement => {
   const [visible, setVisible] = useState(true);
@@ -13,7 +11,6 @@ const Access = (): ReactElement => {
   const [arrayUsers, setArrayUsers] = useState([]);
   const [loginFailed, setLoginFailed] = useState(false);
   const [checkname, setCheckname] = useState({ color: "", phrase: "" });
-  const router = useRouter();
 
   const {
     user,
@@ -21,12 +18,12 @@ const Access = (): ReactElement => {
     pass,
     setPass,
     online,
-    setOnline,
     icon,
     setIcon,
     color,
     setColor,
     icons,
+    client,
   } = useContext(state);
 
   useEffect(() => {
@@ -40,9 +37,7 @@ const Access = (): ReactElement => {
       setCheckname({ color: "green", phrase: "Nickname valid" });
     }
 
-    axios
-      .get("http://localhost:8000/users")
-      .then((data) => setArrayUsers(data.data));
+    client.get("/users").then((data) => setArrayUsers(data.data));
   }, [user]);
 
   const btnRegister = () => {
@@ -55,21 +50,23 @@ const Access = (): ReactElement => {
     setVisible(false), setLogin(true);
   };
 
-  const registed = () => {
+  const registed = (e) => {
+    e.preventDefault();
     setVisible(false), setLogin(true);
 
-    axios
-      .post("http://localhost:8000/users", {
-        name: user,
-        password: pass,
-        icon: icon,
-        borderColor: color,
-        gotbox: [],
-      })
-      .then((res) => localStorage.setItem("id", res.data.id));
+    client.post("/users", {
+      name: user,
+      password: pass,
+      icon: icon,
+      borderColor: color,
+      gotbox: [],
+    });
+
+    client.get("/users").then((data) => setArrayUsers(data.data));
   };
 
-  const access = () => {
+  const access = (e) => {
+    e.preventDefault();
     const found = arrayUsers.find(
       (el) => el.name === user && el.password === pass
     );
@@ -106,11 +103,13 @@ const Access = (): ReactElement => {
                           maxLength={15}
                           placeholder="Name"
                           setValueInput={setUser}
+                          onSubmit={registed}
                         />
                         <MainInput
                           type="password"
                           placeholder="Password"
                           setValueInput={setPass}
+                          onSubmit={registed}
                         />
                       </div>
                       <div className={styles.checkName}>
@@ -155,7 +154,11 @@ const Access = (): ReactElement => {
                     <div>
                       <button
                         onClick={registed}
-                        disabled={user === "Name" || pass === ""}
+                        disabled={
+                          user === "Name" ||
+                          pass === "" ||
+                          checkname.color === "red"
+                        }
                       >
                         Register
                       </button>
@@ -166,11 +169,16 @@ const Access = (): ReactElement => {
               {login && (
                 <>
                   <div className={styles.Login}>
-                    <MainInput placeholder="Name" setValueInput={setUser} />
+                    <MainInput
+                      placeholder="Name"
+                      setValueInput={setUser}
+                      onSubmit={access}
+                    />
                     <MainInput
                       type="password"
                       placeholder="Password"
                       setValueInput={setPass}
+                      onSubmit={access}
                     />
                     <div className={styles.box4}>
                       <div>

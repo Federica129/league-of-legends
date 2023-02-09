@@ -19,6 +19,7 @@
       height: 15rem;
       background-size: 160px;
       transition: all 0.3s;
+      pointer-events: none;
 
       &:hover {
         filter: none;

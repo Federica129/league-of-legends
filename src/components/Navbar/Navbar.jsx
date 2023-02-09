@@ -181,10 +181,26 @@ const Navbar = () => {
               </li>
             </Link>
           </ul>
+          <div className={styles.selectMobile}>
+            <p>Lang :</p>
+            <select
+              id="lang"
+              name="lang"
+              onChange={(e) => setLang(e.target.value)}
+            >
+              {dataLang?.map((e, i) => {
+                return (
+                  <Fragment key={i}>
+                    <option value={e}>{e.split("_")[1]}</option>
+                  </Fragment>
+                );
+              })}
+            </select>
+          </div>
           {online === true && (
             <div className={styles.logout}>
               <Link href="/user_settings" onClick={activeModal}>
-                <p>Icon</p>
+                <p>Settings</p>
               </Link>
               <p onClick={logout}>Logout</p>
             </div>

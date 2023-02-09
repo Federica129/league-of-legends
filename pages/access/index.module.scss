@@ -47,12 +47,17 @@
             flex-direction: column;
             gap: 10px;
 
+            p {
+              margin-top: 0px;
+            }
+
             .form {
               display: flex;
               justify-content: space-between;
             }
 
             .checkName {
+              height: 21px;
               p {
                 margin: 2px 0;
                 font-size: small;
@@ -105,6 +110,7 @@
             }
 
             h1 {
+              height: 32px;
               word-break: break-all;
               font-size: x-large;
             }
@@ -156,7 +162,7 @@
         align-items: center;
         justify-content: center;
         gap: 20px;
-        height: 50vh;
+        height: 60vh;
       }
 
       p {
@@ -202,6 +208,7 @@
       }
 
       .loginFail {
+        height: 40px;
         color: red;
         font-size: small;
         text-align: center;

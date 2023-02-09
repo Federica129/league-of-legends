@@ -112,7 +112,8 @@
     }
   }
 
-  .select {
+  .select,
+  .selectMobile {
     display: flex;
     gap: 15px;
 
@@ -179,6 +180,23 @@
 
     .select {
       display: none;
+    }
+
+    .selectMobile {
+      justify-content: center;
+      font-size: large;
+      font-weight: 600;
+      border-top: #0e3d53 1px solid;
+
+      select {
+        &:focus {
+          color: white;
+        }
+
+        &:hover {
+          color: #c28f2c;
+        }
+      }
     }
 
     .btnMobile {

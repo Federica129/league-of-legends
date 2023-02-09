@@ -1,0 +1,129 @@
+.User_settings {
+  padding-top: 55px;
+  padding-inline: 80px;
+  height: 100vh;
+  align-items: center;
+  text-align: center;
+  background: rgb(23, 97, 129);
+  background: linear-gradient(
+    0deg,
+    rgba(23, 97, 129, 1) 0%,
+    rgba(22, 87, 113, 1) 10%,
+    rgba(10, 40, 54, 1) 30%,
+    rgba(6, 27, 36, 1) 74%
+  );
+
+  .box {
+    display: flex;
+    justify-content: space-between;
+    .box1 {
+      text-align: center;
+
+      .box2 {
+        div {
+          display: flex;
+
+          justify-content: space-between;
+        }
+
+        padding-right: 8px;
+
+        p {
+          margin: 0;
+        }
+
+        input {
+          width: 69px;
+          background: none;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+        }
+      }
+
+      button {
+        border: 1px solid rgb(49, 49, 49);
+        margin: 5px 0 0 0;
+        width: 159px;
+        height: 1.6rem;
+        background: rgb(74, 66, 37);
+        background: linear-gradient(
+          180deg,
+          rgba(74, 66, 37, 1) 0%,
+          rgba(126, 107, 69, 1) 74%
+        );
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.731);
+        cursor: pointer;
+
+        &:hover {
+          border-left: 1px solid rgb(255, 255, 75);
+          border-top: 1px solid rgb(255, 255, 75);
+          border-right: 1px solid rgb(202, 202, 0);
+          border-bottom: 1px solid rgb(202, 202, 0);
+        }
+      }
+    }
+    .box3 {
+      width: 50%;
+      align-self: center;
+      border-left: 1px solid #c28f2c;
+      padding: 20px 0;
+
+      p {
+        color: #c28f2c;
+        transition: 0.5s;
+        cursor: pointer;
+        margin: 0;
+
+        &:hover {
+          color: red;
+        }
+      }
+
+      p:nth-child(2) {
+        color: rgb(170, 170, 170);
+        cursor: auto;
+        font-size: small;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .User_settings {
+    padding-inline: 22px;
+
+    .box {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .box1 {
+        padding-bottom: 30px;
+
+        .box2 {
+          padding-bottom: 15px;
+        }
+
+        button {
+          height: 30px;
+
+          &:hover {
+            border: 1px solid rgb(49, 49, 49);
+          }
+        }
+      }
+      .box3 {
+        border-top: 1px solid #c28f2c;
+        border-left: none;
+        width: 100%;
+
+        p {
+          &:hover {
+            color: #c28f2c;
+          }
+        }
+      }
+    }
+  }
+}

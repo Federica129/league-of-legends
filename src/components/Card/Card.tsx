@@ -1,12 +1,11 @@
-import { memo, useContext, useCallback, useEffect } from "react";
+import { memo, useContext, useCallback } from "react";
 import styles from "./index.module.scss";
 import Link from "next/link";
-import axios from "axios";
 import { state } from "../../../pages/_app";
 
 function Card({ data }) {
   const { name, id } = data;
-  const pngImg = data.image.full.split(".")[0];
+  const pngImg = data.image ? data.image.full.split(".")[0] : null;
   const { champWithBox, setChampWithBox } = useContext(state);
 
   const addChamp = useCallback(() => {
@@ -18,35 +17,37 @@ function Card({ data }) {
   }, [champWithBox]);
 
   return (
-    <div className={styles.box}>
-      <div className={styles.Card}>
-        <Link href={`/champ/${id}`}>
-          <div
-            className={styles.cardImg}
-            style={{
-              backgroundImage: `URL(
+    <>
+      <div className={styles.box}>
+        <div className={styles.Card}>
+          <Link href={`/champ/${id}`}>
+            <div
+              className={styles.cardImg}
+              style={{
+                backgroundImage: `URL(
             http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pngImg}_0.jpg
           )`,
-            }}
-          >
-            <div className={styles.nameChamp}>
-              <p>{name}</p>
+              }}
+            >
+              <div className={styles.nameChamp}>
+                <p>{name}</p>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
+        {champWithBox.includes(
+          champWithBox.find((event: any) => event === data.key)
+        ) ? (
+          <button onClick={addChamp} className={styles.btnDone}>
+            Done
+          </button>
+        ) : (
+          <button onClick={addChamp} className={styles.btnAdd}>
+            Add
+          </button>
+        )}
       </div>
-      {champWithBox.includes(
-        champWithBox.find((event: any) => event === data.key)
-      ) ? (
-        <button onClick={addChamp} className={styles.btnDone}>
-          Done
-        </button>
-      ) : (
-        <button onClick={addChamp} className={styles.btnAdd}>
-          Add
-        </button>
-      )}
-    </div>
+    </>
   );
 }
 

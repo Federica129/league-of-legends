@@ -1,20 +1,12 @@
 {
   "users": [
     {
-      "name": "pippo",
-      "password": "123",
-      "id": 0
-    },
-    {
-      "name": "111",
-      "password": "111",
-      "icon": "https://pbs.twimg.com/media/D6yHZ5VVsAAwZxz.png",
-      "borderColor": "#c28f2c",
-      "id": 9,
-      "gotbox": [
-        "103",
-        "266"
-      ]
+      "name": "Federica",
+      "password": "Lol123!",
+      "icon": "https://preview.redd.it/v2qx9a5ekzt11.jpg?auto=webp&s=0788b7d446f7a399d7716fc4dc38d69f21f696e7",
+      "borderColor": "#ba0ad1",
+      "gotbox": [],
+      "id": 1
     }
   ]
 }

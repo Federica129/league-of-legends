@@ -1,5 +1,6 @@
 //http://ddragon.leagueoflegends.com/cdn/12.20.1/data/en_US/champion.json
 import axios from "axios";
+
 //version
 const arrayVersion = [];
 
@@ -22,7 +23,7 @@ const GET = async (lang, name, router) => {
     );
 
     if (!Object.keys(res.data)) {
-      throw error;
+      throw Error;
     }
 
     return res.data;

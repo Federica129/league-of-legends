@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Project info
 
-This is a [Next.js](https://nextjs.org/) project with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)., realized to improve, deepen my knowledge and test code as jr.FE developer, realizing a mock as users Database with JSON-SERVER.
+This is a [Next.js](https://nextjs.org/) project with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), realized to improve, deepen my knowledge and test code as jr.FE developer, realizing a mock as users Database with JSON-SERVER.
 
 I love to play on League Of Legends, so this is the theme of the Project using this API: <a href='https://developer.riotgames.com/docs/lol'>link</a> :P .
 
@@ -40,7 +40,7 @@ The user can in this project:
 <li>before of login, can only see page "Access" to Register or to Login and page "About me" (with or without Login)</li>
 <li>after login, can navigate in page: <br>
 
-<ol><li>"Home" where show the API version</li>
+<ol><li>"Home" where show the API version (new updates? No problem, the latest version will always be shown)</li>
 <li>"Champ" where can see all the champions with or without filter and select them (with button "add") if the user earned a box.. like a list</li>
 <li>[name], a page at click of a card in page "Champ" with info (spells, name, skin, eg.) of the selected champion.</li>
 <br>

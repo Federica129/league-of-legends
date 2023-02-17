@@ -6,6 +6,7 @@ import { useEffect, useState, useRef, useCallback, useContext } from "react";
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
 import Link from "next/link";
 import { state } from "../../_app";
+import { arrayVersion } from "../../../src/utils/api";
 
 const Champ = () => {
   const router = useRouter();
@@ -19,6 +20,7 @@ const Champ = () => {
   const keySpell = ["Q", "W", "E", "R"];
 
   const { lang, user } = useContext(state);
+  const version = arrayVersion[0];
 
   useEffect(() => {
     if (name) {
@@ -70,7 +72,7 @@ const Champ = () => {
                   <div>
                     <img
                       alt="passive"
-                      src={`http://ddragon.leagueoflegends.com/cdn/12.21.1/img/passive/${infoChamp?.passive?.image?.full}`}
+                      src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${infoChamp?.passive?.image?.full}`}
                     />
                     <h4>
                       {infoChamp?.test}P - {infoChamp?.passive?.name}
@@ -84,7 +86,7 @@ const Champ = () => {
                       <div>
                         <img
                           alt="spell"
-                          src={`http://ddragon.leagueoflegends.com/cdn/12.21.1/img/spell/${e.image?.full}`}
+                          src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${e.image?.full}`}
                         />
                         <h4 className={styles.tasti}>
                           {keySpell[i]} - {e.name}
